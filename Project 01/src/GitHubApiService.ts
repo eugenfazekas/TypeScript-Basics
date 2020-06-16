@@ -1,9 +1,17 @@
 import * as request from 'request';
-
-class GitHubApiService {
+import {User} from './User'
+export class GitHubApiService {
 	getUserInfo(userName: string) {
-		request.get('https://api.github.com/users' + userName, (response: any ) =>{
-			console.log(response);
+		let options: any = {
+			headers: {
+				'User-Agent': 'request'
+			},
+			json:  true
+		}
+		request.get('https://api.github.com/users/' + userName, options, (error: any, 
+		response: any, body: any) =>{
+			let user = new User(body);
+			console.log(user);
 		})
 	}
 	getRepos() {
