@@ -1,0 +1,8 @@
+
+// Custom output filename
+tsc customfile.ts --out output-script.js
+
+// after every save recompilation
+tsc customfile.ts --out output-script.js --watch
+
+tsc -help
